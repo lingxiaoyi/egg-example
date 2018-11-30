@@ -9,15 +9,17 @@ function toInt(str) {
 class QidController extends Controller {
   async index() {
     const ctx = this.ctx;
-    const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    ctx.body = await ctx.model.Qids.findAll(query);
+    // const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
+    const query = { projectId: toInt(ctx.query.projectId) };
+    ctx.body = await ctx.model.Qids.findAll(
+      { where: query }
+    );
   }
 
   async show() {
     const ctx = this.ctx;
     ctx.body = await ctx.model.Qids.findByPk(toInt(ctx.params.id));
   }
-
   async create() {
     const ctx = this.ctx;
     const { projectId, qid } = ctx.request.body;

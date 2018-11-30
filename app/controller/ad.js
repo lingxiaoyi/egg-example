@@ -1927,8 +1927,14 @@ class AdController extends Controller {
   }
   async index() {
     const ctx = this.ctx;
-    const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    ctx.body = await ctx.model.Ads.findAll(query);
+    const query = { projectId: toInt(ctx.query.projectId), qidId: toInt(ctx.query.qidId), pageId: toInt(ctx.query.pageId) };
+    this.logger.debug('debug info');
+    this.logger.info('some request data: %j', ctx.request.body);
+    this.logger.warn('WARNNING!!!!');
+    this.logger.error(new Error('whoops'));
+    ctx.body = await ctx.model.Ads.findAll(
+      { where: query }
+    );
   }
 
   async show() {
