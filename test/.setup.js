@@ -1,3 +1,4 @@
+'use strict';
 const { app } = require('egg-mock/bootstrap');
 const factories = require('./factories');
 

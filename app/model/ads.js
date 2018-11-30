@@ -2,8 +2,7 @@
 
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
-
-  return app.model.define('ads', {
+  const ads = app.model.define('ads', {
     id: {
       type: INTEGER,
       primaryKey: true,
@@ -31,7 +30,6 @@ module.exports = app => {
       allowNull: false,
       field: 'gg_id',
       defaultValue: '',
-      unique: true, // 唯一
     },
     ggType: {
       type: STRING,
@@ -49,4 +47,5 @@ module.exports = app => {
     created_at: DATE,
     updated_at: DATE,
   });
+  return ads;
 };

@@ -7,8 +7,8 @@ module.exports = app => {
   app.factory = factory;
 
   // 定义 user 和默认数据
-  factory.define('user', app.model.Users, {
-    name: factory.sequence('User.name', n => `name_${n}`),
-    age: 18,
+  factory.define('users', app.model.Users, {
+    email: factory.sequence('Users.email', n => `aad${n}@qq.com`),
+    password: '2121212',
   });
 };

@@ -48,6 +48,8 @@ module.exports = {
       },
       created_at: DATE,
       updated_at: DATE,
+    }, {
+      charset: 'utf8',
     });
   },
 

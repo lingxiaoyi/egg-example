@@ -16,7 +16,7 @@ module.exports = appInfo => {
     database: 'database_development',
     operatorsAliases: false,
     dialectOptions: {
-      charset: 'utf8mb4',
+      charset: 'utf8',
       supportBigNumbers: true,
       bigNumberStrings: true,
     },

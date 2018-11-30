@@ -1,58 +1,57 @@
 'use strict';
-const Controller = require('egg').Controller;
 
+const Controller = require('egg').Controller;
 function toInt(str) {
   if (typeof str === 'number') return str;
   if (!str) return str;
   return parseInt(str, 10) || 0;
 }
-
-class UsersController extends Controller {
+class QidController extends Controller {
   async index() {
     const ctx = this.ctx;
     const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    ctx.body = await ctx.model.Users.findAll(query);
+    ctx.body = await ctx.model.Qids.findAll(query);
   }
 
   async show() {
     const ctx = this.ctx;
-    ctx.body = await ctx.model.Users.findByPk(toInt(ctx.params.id));
+    ctx.body = await ctx.model.Qids.findByPk(toInt(ctx.params.id));
   }
 
   async create() {
     const ctx = this.ctx;
-    const { email, password } = ctx.request.body;
-    const Users = await ctx.model.Users.create({ email, password });
+    const { projectId, qid } = ctx.request.body;
+    const Qids = await ctx.model.Qids.create({ projectId, qid });
     ctx.status = 201;
-    ctx.body = Users;
+    ctx.body = Qids;
   }
 
   async update() {
     const ctx = this.ctx;
     const id = toInt(ctx.params.id);
-    const Users = await ctx.model.Users.findByPk(id);
-    if (!Users) {
+    const Qids = await ctx.model.Qids.findByPk(id);
+    if (!Qids) {
       ctx.status = 404;
       return;
     }
 
-    const { email, password } = ctx.request.body;
-    await Users.update({ email, password });
-    ctx.body = Users;
+    const { qid } = ctx.request.body;
+    await Qids.update({ qid, id });
+    ctx.body = Qids;
   }
 
   async destroy() {
     const ctx = this.ctx;
     const id = toInt(ctx.params.id);
-    const Users = await ctx.model.Users.findByPk(id);
-    if (!Users) {
+    const Qids = await ctx.model.Qids.findByPk(id);
+    if (!Qids) {
       ctx.status = 404;
       return;
     }
 
-    await Users.destroy();
+    await Qids.destroy();
     ctx.status = 200;
   }
 }
 
-module.exports = UsersController;
+module.exports = QidController;
