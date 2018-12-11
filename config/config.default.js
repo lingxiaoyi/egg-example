@@ -12,6 +12,7 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
+    domainWhiteList: [ 'http://localhost:4200', 'http://localhost:9528' ],
   };
   return config;
 };

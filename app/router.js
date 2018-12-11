@@ -14,5 +14,5 @@ module.exports = app => {
   router.resources('qid', '/api/v1/qid', controller.qid);
   router.resources('page', '/api/v1/page', controller.page);
   router.get('/api/v1/generate_ggfile', controller.index.index);
-  router.get('/api/v1/get_menu', controller.index.index);
+  router.get('/api/v1/get_menu', controller.index.menu);
 };

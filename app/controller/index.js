@@ -50,6 +50,20 @@ class HomeController extends Controller {
       ctx.body = 'OK';
     }
   }
+  async menu() {
+    const ctx = this.ctx;
+    const data = await ctx.model.Projects.findAll();
+    const obj = {};
+    obj.project = data;
+    for (const item of data) {
+      obj[item.project] = await ctx.model.Pages.findAll({
+        where: {
+          projectId: item.id,
+        },
+      });
+    }
+    ctx.body = obj;
+  }
 }
 
 module.exports = HomeController;

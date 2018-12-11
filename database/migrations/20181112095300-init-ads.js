@@ -31,7 +31,6 @@ module.exports = {
         allowNull: false,
         field: 'gg_id',
         defaultValue: '',
-        unique: true, // 唯一
       },
       ggType: {
         type: STRING,
