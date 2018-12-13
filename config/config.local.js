@@ -10,10 +10,11 @@ module.exports = appInfo => {
   config.middleware = [];
   // sequelize options
   config.sequelize = {
+    username: 'developer',
+    password: '123123',
+    database: 'sports_ad',
+    host: '172.18.254.39',
     dialect: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    database: 'database_development',
     operatorsAliases: false,
     dialectOptions: {
       charset: 'utf8',

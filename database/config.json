@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "username": "developer",
+    "password": "123123",
+    "database": "sports_ad",
+    "host": "172.18.254.39",
     "dialect": "mysql",
     "pool":{
       "max": 5,
@@ -35,10 +35,10 @@
     }
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "developer",
+    "password": "123123",
+    "database": "sports_ad",
+    "host": "172.18.254.39",
     "dialect": "mysql",
     "pool":{
       "max": 5,
